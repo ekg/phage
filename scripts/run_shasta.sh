@@ -5,9 +5,9 @@ input=$2
 
 time shasta --threads 32 \
      --Align.minAlignedMarkerCount 50 \
-     --Reads.minReadLength 2000 \
-     --Kmers.probability 0.3 \
-     --MarkerGraph.minCoverage 100 \
+     --Reads.minReadLength 2500 \
+     --Kmers.probability 0.5 \
+     --MarkerGraph.minCoverage 200 \
      --MarkerGraph.maxCoverage 1000000 \
      --MarkerGraph.highCoverageThreshold 1000000 \
      --ReadGraph.maxAlignmentCount 10 \
