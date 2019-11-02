@@ -4,18 +4,23 @@ x=$1
 input=$2
 
 time shasta --threads 32 \
-     --Align.minAlignedMarkerCount 50 \
-     --Reads.minReadLength 2500 \
-     --Kmers.probability 0.5 \
-     --MarkerGraph.minCoverage 200 \
-     --MarkerGraph.maxCoverage 1000000 \
-     --MarkerGraph.highCoverageThreshold 1000000 \
-     --ReadGraph.maxAlignmentCount 10 \
-     --ReadGraph.minComponentSize 100 \
-     --MinHash.minHashIterationCount 20 \
-     --MarkerGraph.pruneIterationCount 6 \
-     --input $input \
-     --assemblyDirectory $x
+    --Align.minAlignedMarkerCount 10 \
+    --Reads.minReadLength 1000 \
+    --Kmers.k 10 \
+    --Kmers.probability 0.1 \
+    --MinHash.maxBucketSize 100 \
+    --MarkerGraph.minCoverage 100 \
+    --MarkerGraph.maxCoverage 1000000 \
+    --MarkerGraph.lowCoverageThreshold 10 \
+    --MarkerGraph.highCoverageThreshold 1000 \
+    --MarkerGraph.edgeMarkerSkipThreshold 100 \
+    --ReadGraph.maxAlignmentCount 6 \
+    --ReadGraph.minComponentSize 10 \
+    --MinHash.minHashIterationCount 20 \
+    --MarkerGraph.pruneIterationCount 6 \
+    --input $input \
+    --assemblyDirectory $x
+
 #--memoryMode filesystem --memoryBacking 2M \
 #shasta --command cleanupBinaryData
 
