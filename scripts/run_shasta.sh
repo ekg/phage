@@ -17,7 +17,7 @@ time shasta --threads 32 \
     --ReadGraph.maxAlignmentCount 6 \
     --ReadGraph.minComponentSize 10 \
     --MinHash.minHashIterationCount 20 \
-    --MarkerGraph.pruneIterationCount 2 \
+    --MarkerGraph.pruneIterationCount 6 \
     --input $input \
     --assemblyDirectory $x
 
