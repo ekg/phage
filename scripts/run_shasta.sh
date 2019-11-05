@@ -25,9 +25,9 @@ time shasta --threads 32 \
 #shasta --command cleanupBinaryData
 
 # calculate coverage
-time minimap2 -t 32 -ax map-ont -r2k $x/Assembly.fasta $input \
-    | sambamba view -f bam -S /dev/stdin >$x.unsrt.bam \
-    && sambamba sort -o $x.bam $x.unsrt.bam \
-    && rm -f $x.unsrt.bam{,.bai} \
-    && samtools coverage $x.bam >$x.bam.coverage \
-    && samtools depth -H -m 100000000 -a $x.bam | gzip >$x.bam.depth.tsv.gz
+#time minimap2 -t 32 -ax map-ont -r2k $x/Assembly.fasta $input \
+#    | sambamba view -f bam -S /dev/stdin >$x.unsrt.bam \
+#    && sambamba sort -o $x.bam $x.unsrt.bam \
+#    && rm -f $x.unsrt.bam{,.bai} \
+#    && samtools coverage $x.bam >$x.bam.coverage \
+#    && samtools depth -H -m 100000000 -a $x.bam | gzip >$x.bam.depth.tsv.gz
