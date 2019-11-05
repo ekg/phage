@@ -2,8 +2,9 @@
 
 x=$1
 input=$2
+threads=$3
 
-time shasta --threads 32 \
+time shasta --threads $threads \
     --Align.minAlignedMarkerCount 10 \
     --Reads.minReadLength 3000 \
     --Kmers.k 10 \
