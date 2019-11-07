@@ -5,6 +5,7 @@ input=$2
 threads=$3
 simplify=$4
 readlength=$5
+hashiteration=$6
 
 time shasta --threads $threads \
     --Align.minAlignedMarkerCount 10 \
@@ -19,7 +20,7 @@ time shasta --threads $threads \
     --MarkerGraph.edgeMarkerSkipThreshold 100 \
     --ReadGraph.maxAlignmentCount 6 \
     --ReadGraph.minComponentSize 10 \
-    --MinHash.minHashIterationCount 20 \
+    --MinHash.minHashIterationCount $hashiteration \
     --MarkerGraph.pruneIterationCount 6 \
     --MarkerGraph.simplifyMaxLength $simplify \
     --input $input \
