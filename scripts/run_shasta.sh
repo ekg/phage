@@ -14,7 +14,7 @@ time shasta --threads $threads \
     --Kmers.probability 0.1 \
     --MinHash.maxBucketSize 100 \
     --MarkerGraph.minCoverage 100 \
-    --MarkerGraph.maxCoverage 10000000 \
+    --MarkerGraph.maxCoverage 100000000 \
     --MarkerGraph.lowCoverageThreshold 10 \
     --MarkerGraph.highCoverageThreshold 100 \
     --MarkerGraph.edgeMarkerSkipThreshold 100 \
