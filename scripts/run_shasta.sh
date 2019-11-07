@@ -3,15 +3,17 @@
 x=$1
 input=$2
 threads=$3
+simplify=$4
+readlength=$5
 
 time shasta --threads $threads \
     --Align.minAlignedMarkerCount 10 \
-    --Reads.minReadLength 3000 \
+    --Reads.minReadLength $readlength \
     --Kmers.k 10 \
     --Kmers.probability 0.1 \
     --MinHash.maxBucketSize 100 \
     --MarkerGraph.minCoverage 100 \
-    --MarkerGraph.maxCoverage 1000000 \
+    --MarkerGraph.maxCoverage 10000000 \
     --MarkerGraph.lowCoverageThreshold 10 \
     --MarkerGraph.highCoverageThreshold 100 \
     --MarkerGraph.edgeMarkerSkipThreshold 100 \
@@ -19,6 +21,7 @@ time shasta --threads $threads \
     --ReadGraph.minComponentSize 10 \
     --MinHash.minHashIterationCount 20 \
     --MarkerGraph.pruneIterationCount 6 \
+    --MarkerGraph.simplifyMaxLength $simplify \
     --input $input \
     --assemblyDirectory $x
 
