@@ -1,7 +1,7 @@
 #!/bin/bash
 
 f=$1
-b=$(basename $f .gfa)
+b=$(dirname $f)/$(basename $f .gfa)
 g=$b.gimbry
 
 gimbricate -g $f -f $g.fa -p $g.paf >$g.gfa
