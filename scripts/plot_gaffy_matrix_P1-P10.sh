@@ -15,6 +15,9 @@ input=args[1]
 output=args[2]
 
 y <- read.delim(input)
+# correct factor order
+y$group.name <- factor(as.character(y$group.name), levels=c("P1", "P2", "P3", "P4", "P5", "P6", "P7", "P8", "P9", "P10"))
+
 #x <- subset(x, node.count > 10) # only keep apparently informative reads
 #if (nrow(x) <= keep_num) {
 #y <- x
@@ -30,8 +33,9 @@ pdf(paste(output, "hclust.pdf", sep="."), height=8, width=8)
 plot(y.hclust)
 dev.off()
 
-ggplot(y.tree) + geom_tree()
-ggsave(paste(output, "tree.pdf", sep="."), height=8, width=8)
+#ggplot(y.tree) + geom_tree()
+ggtree(y.tree)  %<+% data.frame(node=1:nrow(y.tree$edge), group.name=factor(c(as.character(y$group.name),rep("internal",nrow(y.tree$edge)-nrow(y))), levels=c(levels(y$group.name),"internal") )) + aes(color=group.name) + geom_tree() + scale_color_manual("passage",values=c(rainbow(13)[0:10], 'black'))
+ggsave(paste(output, "tree.pdf", sep="."), height=40, width=9)
 
 .Color <- rainbow(13)[0:10]
 pdf(paste(output, "phylo.p.pdf", sep="."), height=40, width=9)
