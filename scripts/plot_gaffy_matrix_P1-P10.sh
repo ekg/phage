@@ -24,6 +24,11 @@ y$group.name <- factor(as.character(y$group.name), levels=c("P1", "P2", "P3", "P
 #} else {
 #   y <- sample_n(x, keep_num)
 #}
+ggplot(y, aes(x=query.length, color=group.name)) + geom_density() + scale_color_manual("passage",values=c(rainbow(12)[0:10], 'black'))
+ggsave(paste(output, "query.length.density.pdf", sep="."), height=6, width=10)
+ggplot(y, aes(x=query.length, fill=group.name)) + geom_histogram(binwidth=50) + scale_fill_manual("passage",values=c(rainbow(12)[0:10], 'black'))
+ggsave(paste(output, "query.length.hist.pdf", sep="."), height=6, width=10)
+
 y.matrix <- y[ , !names(y) %in% c("group.name","aln.name","query.length","node.count")]
 y.dist <- dist(y.matrix)
 y.tree <- nj(y.dist)
