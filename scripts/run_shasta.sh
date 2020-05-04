@@ -12,11 +12,11 @@ time shasta --threads $threads \
     --Reads.minReadLength $readlength \
     --Kmers.k 10 \
     --Kmers.probability 0.1 \
-    --MinHash.maxBucketSize 100 \
+    --MinHash.maxBucketSize 10 \
     --MarkerGraph.minCoverage 100 \
     --MarkerGraph.maxCoverage 100000000 \
     --MarkerGraph.lowCoverageThreshold 10 \
-    --MarkerGraph.highCoverageThreshold 100 \
+    --MarkerGraph.highCoverageThreshold 10000 \
     --MarkerGraph.edgeMarkerSkipThreshold 100 \
     --ReadGraph.maxAlignmentCount 6 \
     --ReadGraph.minComponentSize 10 \
