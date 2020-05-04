@@ -24,6 +24,11 @@ y$group.name <- factor(as.character(y$group.name), levels=c("P1", "P2", "P3", "P
 #} else {
 #   y <- sample_n(x, keep_num)
 #}
+ggplot(y, aes(x=query.length, color=group.name)) + geom_density() + scale_color_manual("passage",values=c(rainbow(12)[0:10], 'black'))
+ggsave(paste(output, "query.length.density.pdf", sep="."), height=6, width=10)
+ggplot(y, aes(x=query.length, fill=group.name)) + geom_histogram(binwidth=50) + scale_fill_manual("passage",values=c(rainbow(12)[0:10], 'black'))
+ggsave(paste(output, "query.length.hist.pdf", sep="."), height=6, width=10)
+
 y.matrix <- y[ , !names(y) %in% c("group.name","aln.name","query.length","node.count")]
 y.dist <- dist(y.matrix)
 y.tree <- nj(y.dist)
@@ -48,11 +53,11 @@ ggsave(paste(output, "ggtree.node.count.pdf", sep="."), height=40, width=9)
 
 .Color <- rainbow(12)[0:10]
 pdf(paste(output, "phylo.p.pdf", sep="."), height=40, width=9)
-plotnj(y.tree, X.class=as.numeric(y$group.name), type='p', main='phylogeny of 5-45kb nanopore reads for B1phi1 1st BL21\ncorrected against run1.B1phi1.i1 compressed assembly graph'); legend("bottomright", inset=0, title="Passage sample id", c(as.character(c(1:10))), fill=.Color, cex=0.8)
+plotnj(y.tree, X.class=as.numeric(y$group.name), type='p', main='nanopore reads corrected against assembly graph'); legend("bottomright", inset=0, title="Passage sample id", c(as.character(c(1:10))), fill=.Color, cex=0.8)
 dev.off()
 
 pdf(paste(output, "phylo.u.pdf", sep="."), height=9, width=9)
-plotnj(y.tree, X.class=as.numeric(y$group.name), type='u', main='phylogeny of 5-45kb nanopore reads for B1phi1 1st BL21\ncorrected against run1.B1phi1.i1 compressed assembly graph'); legend("topleft", inset=0, title="Passage sample id", c(as.character(c(1:10))), fill=.Color, cex=0.8)
+plotnj(y.tree, X.class=as.numeric(y$group.name), type='u', main='nanopore reads corrected against assembly graph'); legend("topleft", inset=0, title="Passage sample id", c(as.character(c(1:10))), fill=.Color, cex=0.8)
 dev.off()
 
 y.pca <- prcomp(y.matrix)
