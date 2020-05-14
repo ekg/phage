@@ -26,6 +26,8 @@ y$group.name <- factor(as.character(y$group.name), levels=c("P1", "P2", "P3", "P
 #}
 colfunc <- colorRampPalette(c("red", "yellow"))
 phage.colors=c(colfunc(10), rainbow(8)[3:7])
+phage.colors[11] <- "#B6FF00"
+phage.colors[12] <- "#00FF7F"
 
 ggplot(y, aes(x=path.length, color=group.name)) + geom_density() + scale_color_manual("passage",values=c(phage.colors, "black"))
 ggsave(paste(output, "path.length.density.pdf", sep="."), height=6, width=10)
