@@ -46,6 +46,10 @@ dev.off()
 ggtree(y.tree) %<+% data.frame(node=1:nrow(y.tree$edge), group.name=factor(c(as.character(y$group.name),rep("internal",nrow(y.tree$edge)-nrow(y))), levels=c(levels(y$group.name),"internal") )) + aes(color=group.name) + geom_tree() + scale_color_manual("passage",values=c(phage.colors, "black"))
 ggsave(paste(output, "ggtree.passage.pdf", sep="."), height=40, width=9)
 
+ggtree(y.tree, layout="daylight") %<+% data.frame(node=1:nrow(y.tree$edge), group.name=factor(c(as.character(y$group.name),rep("internal",nrow(y.tree$edge)-nrow(y))), levels=c(levels(y$group.name),"internal") )) + aes(color=group.name) + geom_tree() + scale_color_manual("passage",values=c(phage.colors, "black"))
+ggsave(paste(output, "ggtree.passage.daylight.pdf", sep="."), height=10, width=10)
+
+
 # takes forever
 #ggtree(y.tree, layout="unrooted") %<+% data.frame(node=1:nrow(y.tree$edge), group.name=factor(c(as.character(y$group.name),rep("internal",nrow(y.tree$edge)-nrow(y))), levels=c(levels(y$group.name),"internal") )) + aes(color=group.name) + geom_tree() + scale_color_manual("passage",values=c(rainbow(12)[0:10], 'black'))
 #ggsave(paste(output, "ggtree.passage.unrooted.pdf", sep="."), height=40, width=9)
